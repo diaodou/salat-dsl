@@ -1,0 +1,6 @@
+# salat-dsl
+
+salat-dsl is a mongodb query dsl library, which is based on salat.
+
+Salat is a bi-directional Scala case class serialization library that leverages
+MongoDB's `DBObject` (which uses BSON underneath) as its target format.
