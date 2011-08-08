@@ -61,18 +61,18 @@ class EmptyQueryClause[V](fieldRef: => V) extends QueryClause {
 }
 
 class QueryField[V](fieldRef: => V) {
-  def eqs(v: V) = new EqClause[V](fieldRef, v)
-  def neqs(v: V) = new TermQueryClause(fieldRef, CondOps.Ne, v)
-  def in[L <% List[V]](vs: L) = QueryHelpers.inListClause(fieldRef, vs)
-  def nin[L <% List[V]](vs: L) = new TermQueryClause(fieldRef, CondOps.Nin, QueryHelpers.list(vs))
-  def exists(b: Boolean) = new TermQueryClause(fieldRef, CondOps.Exists, b)
+  def $eqs(v: V) = new EqClause[V](fieldRef, v)
+  def $neqs(v: V) = new TermQueryClause(fieldRef, CondOps.Ne, v)
+  def $in[L <% List[V]](vs: L) = QueryHelpers.inListClause(fieldRef, vs)
+  def $nin[L <% List[V]](vs: L) = new TermQueryClause(fieldRef, CondOps.Nin, QueryHelpers.list(vs))
+  def $exists(b: Boolean) = new TermQueryClause(fieldRef, CondOps.Exists, b)
 }
 
 class NumericQueryField[V](fieldRef: => V) {
-  def lt(v: V) = new TermQueryClause(fieldRef, CondOps.Lt, v)
-  def gt(v: V) = new TermQueryClause(fieldRef, CondOps.Gt, v)
-  def lte(v: V) = new TermQueryClause(fieldRef, CondOps.LtEq, v)
-  def gte(v: V) = new TermQueryClause(fieldRef, CondOps.GtEq, v)
+  def $lt(v: V) = new TermQueryClause(fieldRef, CondOps.Lt, v)
+  def $gt(v: V) = new TermQueryClause(fieldRef, CondOps.Gt, v)
+  def $lte(v: V) = new TermQueryClause(fieldRef, CondOps.LtEq, v)
+  def $gte(v: V) = new TermQueryClause(fieldRef, CondOps.GtEq, v)
 }
 
 class ListQueryField[V, L <% List[V]](fieldRef: => L) {
@@ -115,23 +115,23 @@ class TermModifyClause[V](fieldRef: => V, op: ModOps.Value, v: V) extends Modify
 }
 
 class ModifyField[V](fieldRef: => V) {
-  def setTo(v: V) = new TermModifyClause(fieldRef, ModOps.Set, v)
-  def unset = new TermModifyClause(fieldRef, ModOps.Unset, 1)
+  def $setTo(v: V) = new TermModifyClause(fieldRef, ModOps.Set, v)
+  def $unset = new TermModifyClause(fieldRef, ModOps.Unset, 1)
 }
 
 class NumericModifyField[V](fieldRef: => V) {
-  def inc(v: V) = new TermModifyClause(fieldRef, ModOps.Inc, v)
+  def $inc(v: V) = new TermModifyClause(fieldRef, ModOps.Inc, v)
 }
 
 class ListModifyField[V, L <% List[V]](fieldRef: => L) {
-  def setTo(vs: List[V]) = new TermModifyClause(fieldRef, ModOps.Set, vs)
-  def push(v: V) = new TermModifyClause(fieldRef, ModOps.Push, v)
-  def pushAll(vs: List[V]) = new TermModifyClause(fieldRef, ModOps.PushAll, QueryHelpers.list(vs))
-  def addToSet(v: V) = new TermModifyClause(fieldRef, ModOps.AddToSet, v)
-  def popFirst = new TermModifyClause(fieldRef, ModOps.Pop, -1)
-  def popLast = new TermModifyClause(fieldRef, ModOps.Pop, 1)
-  def pull(v: V) = new TermModifyClause(fieldRef, ModOps.Pull, v)
-  def pullAll(vs: List[V]) = new TermModifyClause(fieldRef, ModOps.PullAll, QueryHelpers.list(vs))
+  def $setTo(vs: List[V]) = new TermModifyClause(fieldRef, ModOps.Set, vs)
+  def $push(v: V) = new TermModifyClause(fieldRef, ModOps.Push, v)
+  def $pushAll(vs: List[V]) = new TermModifyClause(fieldRef, ModOps.PushAll, QueryHelpers.list(vs))
+  def $addToSet(v: V) = new TermModifyClause(fieldRef, ModOps.AddToSet, v)
+  def $popFirst = new TermModifyClause(fieldRef, ModOps.Pop, -1)
+  def $popLast = new TermModifyClause(fieldRef, ModOps.Pop, 1)
+  def $pull(v: V) = new TermModifyClause(fieldRef, ModOps.Pull, v)
+  def $pullAll(vs: List[V]) = new TermModifyClause(fieldRef, ModOps.PullAll, QueryHelpers.list(vs))
 }
 
 object QueryBuilder {
