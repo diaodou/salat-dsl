@@ -1,7 +1,6 @@
-package com.poseidon.dsl
+package com.matrix.salat.dsl
 
-import com.mongodb.DBObject
-import com.poseidon.util.CondOps
+import com.matrix.salat.util.CondOps
 
 object QueryHelpers {
   def makeJavaList[T](sl: Iterable[T]): java.util.List[T] = {

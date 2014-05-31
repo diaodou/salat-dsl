@@ -1,4 +1,4 @@
-package com.poseidon.util
+package com.matrix.salat.util
 
 import com.novus.salat._
 import java.lang.reflect.Method
@@ -7,9 +7,9 @@ import net.sf.cglib.proxy.MethodProxy
 import com.novus.salat.annotations.raw.Key
 import net.sf.cglib.proxy.Enhancer
 
-object CondOps extends Enumeration(0, "$ne", "$lt", "$gt", "$lte", "$gte", "$in", "$nin", "$near", "$all", "$size", "$exists", "$type", "$mod") {
+object CondOps extends Enumeration(0, "$ne", "$lt", "$gt", "$lte", "$gte", "$regex", "$in", "$nin", "$near", "$all", "$size", "$exists", "$type", "$mod") {
   type Op = Value
-  val Ne, Lt, Gt, LtEq, GtEq, In, Nin, Near, All, Size, Exists, Type, Mod = Value
+  val Ne, Lt, Gt, LtEq, GtEq, Regex, In, Nin, Near, All, Size, Exists, Type, Mod = Value
 }
 
 object ModOps extends Enumeration(0, "$inc", "$set", "$unset", "$push", "$pushAll", "$addToSet", "$pop", "$pull", "$pullAll") {

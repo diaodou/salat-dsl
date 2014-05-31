@@ -5,6 +5,9 @@ salat-dsl is a mongodb query dsl library, which is based on salat.
 Salat(https://github.com/novus/salat) is a bi-directional Scala case class serialization library that leverages
 MongoDB's `DBObject` (which uses BSON underneath) as its target format.
 
-# Examples
+# why?
+salat-dsl是类型安全的查询修改mongdob的dsl类库，如果你更改某个字段名，编译器会告诉你哪里需要更改。
 
-[TestDao.scala](https://github.com/diaodou/salat-dsl/blob/master/src/main/scala/com/poseidon/dsl/TestDao.scala)
+# Examples
+> import com.matrix.salat.Imports._
+> UserDao.where(u => (u.tags $contains "tag") || (u.id $eqs 1)).find().toList

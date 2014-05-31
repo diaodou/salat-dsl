@@ -1,10 +1,9 @@
-package com.poseidon.dsl
+package com.matrix.salat.dsl
 
-import com.poseidon.util._
+import com.matrix.salat.util._
 import com.mongodb.DBObject
 import com.mongodb.casbah.commons.MongoDBObject
 import com.mongodb.BasicDBObject
-import java.util.regex.Pattern
 import com.mongodb.BasicDBList
 
 trait QueryClause {
@@ -24,7 +23,6 @@ class AndQueryClause(l: QueryClause, r: QueryClause) extends QueryClause {
 
 class OrQueryClause(l: QueryClause, r: QueryClause) extends QueryClause {
   def toDBObject(c: Context): DBObject = {
-    val dbo = new BasicDBObject()
     val cs = new BasicDBList
     cs.add(l.toDBObject(c))
     cs.add(r.toDBObject(c))
@@ -63,6 +61,7 @@ class EmptyQueryClause[V](fieldRef: => V) extends QueryClause {
 class QueryField[V](fieldRef: => V) {
   def $eqs(v: V) = new EqClause[V](fieldRef, v)
   def $neqs(v: V) = new TermQueryClause(fieldRef, CondOps.Ne, v)
+  def $regex(v: V) = new TermQueryClause(fieldRef, CondOps.Regex, v)
   def $in[L <% List[V]](vs: L) = QueryHelpers.inListClause(fieldRef, vs)
   def $nin[L <% List[V]](vs: L) = new TermQueryClause(fieldRef, CondOps.Nin, QueryHelpers.list(vs))
   def $exists(b: Boolean) = new TermQueryClause(fieldRef, CondOps.Exists, b)
