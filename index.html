@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640" />
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Salat-dsl by diaodou</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/diaodou/salat-dsl">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Salat-dsl</h1>
+            <h2>MongoDB dsl query tools based on salat</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/diaodou/salat-dsl/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/diaodou/salat-dsl/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1>
+<a name="salat-dsl" class="anchor" href="#salat-dsl"><span class="octicon octicon-link"></span></a>salat-dsl</h1>
+
+<p>salat-dsl is a mongodb query dsl library, which is based on salat.</p>
+
+<p>Salat(<a href="https://github.com/novus/salat">https://github.com/novus/salat</a>) is a bi-directional Scala case class serialization library that leverages
+MongoDB's <code>DBObject</code> (which uses BSON underneath) as its target format.</p>
+
+<h1>
+<a name="why" class="anchor" href="#why"><span class="octicon octicon-link"></span></a>why?</h1>
+
+<p>salat-dsl是类型安全的查询修改mongdob的dsl类库，如果你更改某个字段名，编译器会告诉你哪里需要更改。</p>
+
+<h1>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h1>
+
+<blockquote>
+<p>import com.matrix.salat.Imports._
+UserDao.where(u =&gt; (u.tags $contains "tag") || (u.id $eqs 1)).find().toList</p>
+</blockquote>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/diaodou">diaodou</a> can be found on <a href="https://github.com/diaodou/salat-dsl">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-51501297-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
